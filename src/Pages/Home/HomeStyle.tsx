@@ -1,5 +1,5 @@
 import { makeStyles } from "tss-react/mui";
-import BasicStyle from "../Utilites/BasicStyle";
+import BasicStyle from "../../Utilites/BasicStyle";
 
 const HomeStyle = makeStyles({ name: "HomeStyle" })(() => ({
   home: {
@@ -25,25 +25,6 @@ const HomeStyle = makeStyles({ name: "HomeStyle" })(() => ({
     alignContent: "center",
     alignItems: "center",
     gap: "40px",
-  },
-
-  inputLocation: {
-    fontSize: "24px",
-    color: "white",
-    display: "block",
-    margin: "50px auto",
-    width: "min(70%, 450px)",
-    height: "35px",
-    backgroundColor: "rgb(82, 113, 222)",
-
-    "&::placeholder": {
-      color: "rgb(190, 190, 190)",
-      opacity: "1",
-    },
-  },
-  parametersContainer: {
-    width: "fit-content",
-    margin: "0 auto",
   },
 }));
 

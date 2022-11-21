@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ParametersStyle from "./ParametersStyle";
 import axios from "axios";
-import cityToCoord from "../Json/cityToCoord.json";
+import cityToCoord from "../../Json/cityToCoord.json";
 
 interface IButtons {
   content: string;
@@ -59,6 +59,34 @@ const Parameters = () => {
 
   function handleChange(event: any) {
     setCity(event.target.value.toLowerCase());
+  }
+
+  function handleRequest() {
+    if (city === "" || !(city in cityToCoord)) {
+      console.log("City Not Found");
+    } else if (parameters.every((param) => param === false)) {
+      console.log("No Parameters selected");
+    } else {
+      let selectedParameters = [];
+
+      for (let i = 0; i < parameters.length; i++) {
+        if (parameters[i] === true) {
+          selectedParameters.push(parametersName[i]);
+        }
+      }
+
+      axios
+        .get("https://api.open-meteo.com/v1/forecast", {
+          params: {
+            latitude: cityToCoord[city as keyof typeof cityToCoord].lat,
+            longitude: cityToCoord[city as keyof typeof cityToCoord].lng,
+            hourly: selectedParameters.toString(),
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        });
+    }
   }
 
   function renderButtons() {

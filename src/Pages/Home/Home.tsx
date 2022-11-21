@@ -1,4 +1,4 @@
-import Parameters from "../Components/Parameters";
+import Parameters from "../../Components/Parameters/Parameters";
 import HomeStyle from "./HomeStyle";
 
 const Home = () => {
@@ -15,13 +15,8 @@ const Home = () => {
             Choose a <span>location</span> and pick parameters you look for
           </h3>
         </div>
-        <input
-          className={classes.inputLocation}
-          placeholder="Choose a location"
-        />
-        <div className={classes.parametersContainer}>
-          <Parameters />
-        </div>
+
+        <Parameters />
       </section>
 
       <section id="about">
